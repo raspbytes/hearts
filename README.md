@@ -1,3 +1,3 @@
 # hearts (java edition) ♥️🎴
-hearts game for my CS class
+hearts in java
 enjoi =D

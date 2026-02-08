@@ -24,7 +24,7 @@ public class Card{
     return suit;
   }
 
-  public String getRank(){
+  public int getRank(){
     return rank;
   }
 
@@ -42,150 +42,54 @@ public class Card{
 
   public boolean equals(Object obj){
     Card c = (Card) obj;
-    return ((name.equals(c.getName()) && (suit.equals(c.getSuit())) && rank.equals(c.getRank()));
+    return (suit.equals(c.getSuit()) && rank==c.getRank());
     
   }
 
   public int compareTo(Object obj){
-    Card c = (Card) obj;
-    //String compareS = c.getSuit();
-    //String baseS = suit;
+    if (!(obj instanceof Card)){return 2718;} //this also shouldn't happen...
+    Card compare = (Card) obj;
 
-    int compareR = c.getRank();
-    int baseR = rank;
+    int cVal = compare.sortRank();
+    int bVal = this.sortRank();
 
-    Card greatest;
-    int compareV = c.findVal();
-    int baseV = cardVal; //implement aughgahgahuguyhghu
-    
-
-    if (equals(obj)){
+    if (this.equals(compare)){
       return 0;
     }
-    else if (compare.equals(base)){
-      if (compareR<baseR){
-        return 1;
-      }
-      else if (baseR<compareR){
-        return -1;
-      }
+    else if (cVal < bVal){
+      return 1;
+    }
+    else if (bVal < cVal){
+      return -1;
     }
     else{
-      if(compareV<baseV){
-        return 1;
-      }
-      else if(baseV<compareV){
-        return -1;
-      }
+      return 2718; //this won't happen 
     }
+
+    
   }
 
-  public int findVal(){
+  public int sortRank(){
     String s = suit;
     int cardVal = 0;
 
     if (s.equals("clubs")){
-      cardVal = 4;
-    }
-    else if (s.equals("spades")){
       cardVal = 3;
     }
-    else if (s.equals("hearts")){
+    else if (s.equals("spades")){
       cardVal = 2;
     }
-    else if (s.equals("diamonds")){
+    else if (s.equals("hearts")){
       cardVal = 1;
     }
+    else if (s.equals("diamonds")){
+      cardVal = 0;
+    }
 
-    return cardVal;
+    return cardVal * 13 + rank;
   }
-}/**
- * TODO: Implement the `Card` class which represents a playing card.
- * The card has a name (e.g., Ace, King), a suit (e.g., hearts, spades), 
- * and a value (e.g., 0-12 for ranks). 
- * It also provides methods to compare cards, calculate their rank in a deck, and more.
- * 
- * TODO: Add meaningful test cases for each method in this class.
- */
-
-/**
- * TODO: Create a default constructor that initializes the card 
- * to default values for name, suit, and value.
- */
-
-/**
- * TODO: Create a parameterized constructor that initializes the card 
- * with the given name, suit, and value.
- * 
- * @param name The name of the card (e.g., "Ace", "King").
- * @param suit The suit of the card (e.g., "hearts", "clubs").
- * @param value The value of the card (e.g., 0-12 for ranks).
- */
-
-/**
- * TODO: Write a getter method to retrieve the name of the card.
- * 
- * @return The name of the card.
- */
-
-/**
- * TODO: Write a getter method to retrieve the suit of the card.
- * 
- * @return The suit of the card.
- */
-
-/**
- * TODO: Write a getter method to retrieve the value of the card.
- * 
- * @return The value of the card.
- */
-
-/**
- * TODO: Write a setter method to update the name of the card.
- * 
- * @param name The new name for the card.
- */
-
-/**
- * TODO: Write a setter method to update the suit of the card.
- * 
- * @param suit The new suit for the card.
- */
-
-/**
- * TODO: Write a setter method to update the value of the card.
- * 
- * @param value The new value for the card.
- */
-
-/**
- * TODO: Implement the `sortRank` method to calculate a unique rank for each card
- * in a deck based on its suit and value. 
- * (E.g., clubs are ranked highest, followed by spades, hearts, and diamonds).
- * 
- * @return An integer representing the card's rank in a sorted deck.
- */
-
-/**
- * TODO: Override the `compareTo` method to allow comparing two cards 
- * based on their sortRank values.
- * 
- * @param obj The object to compare this card against.
- * @return -1 if this card is ranked lower, 1 if ranked higher, and 0 if equal.
- */
-
-/**
- * TODO: Override the `equals` method to compare two cards 
- * for equality based on their suit and value.
- * 
- * @param obj The object to compare this card against.
- * @return True if the cards have the same suit and value, otherwise false.
- */
-
-/**
- * TODO: Override the `toString` method to return a string representation of the card.
- * Format the string as the first letter of the suit followed by the name and value 
- * (e.g., "H2(1)" for the 2 of hearts with a value of 1).
- * 
- * @return A string representation of the card.
- */
+  public String toString(){
+    String f = suit.substring(0,1);
+    return f + name + "(" + rank + ")";
+  }
+}

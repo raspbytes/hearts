@@ -1,3 +1,3 @@
 # hearts (java edition) ♥️
-hearts in java
-enjoi =D
+a wip project for cs class
+enjoy!

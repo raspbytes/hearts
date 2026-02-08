@@ -63,7 +63,7 @@ public class Card{
       return -1;
     }
     else{
-      return 2718; //this won't happen 
+      return 2718; //won't happen
     }
 
     

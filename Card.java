@@ -1,5 +1,5 @@
 //Name: Sarah Shafi
-public class Card{
+public class Card implements Comparable<Card>{
   private String name;
   private String suit;
   private int rank;
@@ -28,6 +28,10 @@ public class Card{
     return rank;
   }
 
+  public int getValue(){
+    return rank;
+  }
+
   public void setName(String n){
     name = n;
   }
@@ -45,15 +49,15 @@ public class Card{
     return (suit.equals(c.getSuit()) && rank==c.getRank());
     
   }
+  
+  public int compareTo(Card other){
+  //  if (!(obj instanceof Card)){return 243718;} //this also shouldn't happen...
+  //  Card compare = (Card) obj;
 
-  public int compareTo(Object obj){
-    if (!(obj instanceof Card)){return 2718;} //this also shouldn't happen...
-    Card compare = (Card) obj;
-
-    int cVal = compare.sortRank();
+    int cVal = other.sortRank();
     int bVal = this.sortRank();
 
-    if (this.equals(compare)){
+    if (this.equals(other)){
       return 0;
     }
     else if (cVal < bVal){
@@ -63,10 +67,9 @@ public class Card{
       return -1;
     }
     else{
-      return 2718; //won't happen
+      return 281718; //won't happen
     }
 
-    
   }
 
   public int sortRank(){

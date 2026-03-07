@@ -1,5 +1,5 @@
 # hearts (java edition) ♥️🃏
 
 
-a wip project for cs class
+an absolute trash project for cs class
 enjoy!
